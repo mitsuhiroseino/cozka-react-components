@@ -1,1 +1,1 @@
-# cozka-react-component
+# @cozka/react-components
