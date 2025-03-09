@@ -13,6 +13,13 @@ export default {
         targets: { browsers: 'defaults' },
       },
     ],
+    // [
+    //   '@emotion/babel-preset-css-prop',
+    //   {
+    //     runtime: 'automatic',
+    //     importSource: '@emotion/react',
+    //   },
+    // ],
     // typescript用のpreset
     '@babel/preset-typescript',
     ['@babel/preset-react', { runtime: 'automatic' }],
