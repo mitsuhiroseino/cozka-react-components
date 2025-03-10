@@ -1,36 +1,28 @@
-import jsPlugin from '@eslint/js';
-import prettierPlugin from 'eslint-config-prettier';
-import globals from 'globals';
-import tsPlugin from 'typescript-eslint';
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
 
-// lintの設定
-/** @type {import('eslint').Linter.Config[]} */
-export default [
+export default tseslint.config(
+  { ignores: ['dist'] },
   {
-    // 対象はsrc,scripts配下のtsファイル
-    files: ['src/**/*.ts', 'scripts/**/*.ts'],
-    // 念のためにdistとnode_modules配下を除外
-    ignores: ['dist/**', 'node_modules/**'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      // node,jestのグローバル変数を有効
-      globals: [globals.node, globals.jest],
-      parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: process.cwd(),
-      },
+      ecmaVersion: 2020,
+      globals: globals.browser,
     },
-  },
-  // JavaScript用の設定
-  jsPlugin.configs.recommended,
-  // TypeScript用の設定
-  ...tsPlugin.configs.recommended,
-  // prettierと競合するlintを無効にする
-  prettierPlugin,
-  // コンフィグファイルはlintから除外
-  { ignores: ['*.config.{js,mjs,ts}'] },
-  {
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
     rules: {
-      noExplicitAny: false,
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
     },
   },
-];
+)
