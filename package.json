@@ -40,6 +40,7 @@
     "lint": "eslint .",
     "organize": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\" --config ./prettier.organize.config.js",
     "preview": "vite preview",
+    "pull": "tsx scripts/pull.ts",
     "start": "rimraf dist && rollup --config --watch",
     "storybook": "storybook dev -p 6006",
     "test": "jest"
