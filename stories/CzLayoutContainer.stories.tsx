@@ -162,7 +162,7 @@ const MATRIX_PROPS = {
 
 const CONTAINER_PROPS: StyleProps = {
   xHeight: 400,
-  xWidth: 600,
+  xWidth: 400,
   xPadding: 0,
 };
 
