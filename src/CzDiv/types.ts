@@ -4,9 +4,9 @@ import { HTMLAttributes } from 'react';
 /**
  * CzDivのプロパティ
  */
-export type CzDivProps = CzDivPropsBase & StyleProps;
+export type CzDivProps = CzDivOwnProps & StyleProps;
 
 /**
- * CzDiv本来のプロパティ
+ * CzDiv固有のプロパティ
  */
-export type CzDivPropsBase = HTMLAttributes<HTMLDivElement>;
+export type CzDivOwnProps = HTMLAttributes<HTMLDivElement>;

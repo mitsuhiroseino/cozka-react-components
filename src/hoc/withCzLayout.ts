@@ -6,16 +6,17 @@ function _jsx(type: ElementType, props: unknown) {
   return jsx(type, props);
 }
 
-export default function withCzLayout<
-  P extends Record<string, any>,
-  T = unknown,
->(Component: ElementType<P>, options: WidthLayoutOptions = {}) {
+export default function withCzLayout<P extends object = {}, T = unknown>(
+  Component: ElementType<P>,
+  options: WidthLayoutOptions = {},
+) {
   const {
     styleProp = 'css',
     styleApplyMode = 'append',
     jsxRuntime = _jsx,
     ...rest
   } = options;
+
   return withLayout<P, T>(Component, {
     styleProp,
     styleApplyMode,
