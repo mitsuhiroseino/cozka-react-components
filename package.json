@@ -43,9 +43,9 @@
     ]
   },
   "dependencies": {
-    "@cozka/react-defer-rendering": "^0.5.0",
-    "@cozka/react-layout": "^0.12.4",
-    "@cozka/react-style-props": "^0.7.11",
+    "@cozka/react-defer-rendering": "workspace:^",
+    "@cozka/react-layout": "workspace:^",
+    "@cozka/react-style-props": "workspace:^",
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0"
@@ -58,8 +58,8 @@
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.27.0",
     "@chromatic-com/storybook": "3.2.5",
-    "@cozka/rollup-create-dist-packagejson": "^0.8.1",
-    "@cozka/utils-niche-types": "^0.2.0",
+    "@cozka/rollup-create-dist-packagejson": "^0.9.1",
+    "@cozka/utils-niche-types": "workspace:^",
     "@emotion/babel-preset-css-prop": "^11.12.0",
     "@eslint/js": "^9.21.0",
     "@rollup/plugin-babel": "^6.0.4",
