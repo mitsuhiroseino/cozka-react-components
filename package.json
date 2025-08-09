@@ -48,7 +48,8 @@
     "@cozka/react-style-props": "workspace:^",
     "@emotion/css": "^11.13.5",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0"
+    "@emotion/styled": "^11.14.0",
+    "re-resizable": "^6.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",

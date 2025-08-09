@@ -1,5 +1,6 @@
 import { Decorator } from '@storybook/react';
 import chroma from 'chroma-js';
+import { useCallback, useMemo } from 'react';
 import CzDiv from '../src/CzDiv';
 
 function _random(scale: number) {
@@ -38,11 +39,9 @@ export default function _createContainerDecorator(
 
   return (Story, configs: any) => {
     const { args, parameters } = configs;
-    const { randSize, randPos, defaultLayout } = parameters;
-    const { layout = defaultLayout, children = 12, ...rest } = args;
-    const colors = chroma
-      .scale(['d9ed92', '184e77'])
-      .colors(children as number);
+    const { randSize, randPos, defaultLayout, defaultSize } = parameters;
+    const { layout = defaultLayout, childCount = 12, ...rest } = args;
+    const colors = chroma.scale(['d9ed92', '184e77']).colors(childCount);
     const {
       hSize,
       vSize,
@@ -59,11 +58,38 @@ export default function _createContainerDecorator(
       ...defaultProps,
       ...rest,
     };
+    const sizeProps = useMemo(() => {
+      if (randSize) {
+        return Array.from({ length: childCount }).map(() => ({
+          xHeight: _random(100),
+          xWidth: _random(200),
+        }));
+      } else {
+        return Array.from({ length: childCount }).map(() => ({
+          xHeight: 80,
+          xWidth: 160,
+        }));
+      }
+    }, [randSize, childCount]);
+    const positionProps = useMemo(() => {
+      if (randPos) {
+        return Array.from({ length: childCount }).map(() => ({
+          top: _random(defaultSize.height ?? 40),
+          left: _random(defaultSize.width ?? 40),
+        }));
+      } else {
+        return Array.from({ length: childCount }).map((item, index) => ({
+          top: 40 * index,
+          left: 40 * index,
+        }));
+      }
+    }, [randPos, childCount, defaultSize]);
 
     return (
       <Story
         args={{
           layout,
+          defaultSize,
           ...restProps,
           ..._fromNumericStrings({
             hSize,
@@ -79,22 +105,12 @@ export default function _createContainerDecorator(
           }),
           children: colors.map((color, index) => {
             const childProps = {
-              xHeight: 80,
-              xWidth: 160,
+              ...sizeProps[index],
               style: {
-                top: 40 * index,
-                left: 40 * index,
+                ...positionProps[index],
                 backgroundColor: color,
               },
             };
-            if (randSize) {
-              childProps.xHeight = _random(100);
-              childProps.xWidth = _random(200);
-            }
-            if (randPos) {
-              childProps.style.top = _random(args.xHeight ?? 40);
-              childProps.style.left = _random(args.xWidth ?? 40);
-            }
 
             return (
               <CzDiv

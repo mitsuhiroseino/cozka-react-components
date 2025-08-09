@@ -2,11 +2,11 @@ import { StyleProps } from '@cozka/react-style-props';
 import { HTMLAttributes } from 'react';
 
 /**
- * CzDivのプロパティ
+ * プロパティ
  */
 export type CzDivProps = CzDivOwnProps & StyleProps;
 
 /**
- * CzDiv固有のプロパティ
+ * 固有のプロパティ
  */
 export type CzDivOwnProps = HTMLAttributes<HTMLDivElement>;
