@@ -1,6 +1,6 @@
 import { Decorator } from '@storybook/react';
 import chroma from 'chroma-js';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import CzDiv from '../src/CzDiv';
 
 function _random(scale: number) {
@@ -43,13 +43,13 @@ export default function _createContainerDecorator(
     const { layout = defaultLayout, childCount = 12, ...rest } = args;
     const colors = chroma.scale(['d9ed92', '184e77']).colors(childCount);
     const {
-      hSize,
-      vSize,
-      spacing,
-      hSpacing,
-      vSpacing,
-      hCount,
-      vCount,
+      sizeHorizontal,
+      sizeVertical,
+      spacingAll,
+      spacingHorizontal,
+      spacingVertical,
+      countHorizontal,
+      countVertical,
       xHeight,
       xWidth,
       xPadding,
@@ -92,13 +92,13 @@ export default function _createContainerDecorator(
           defaultSize,
           ...restProps,
           ..._fromNumericStrings({
-            hSize,
-            vSize,
-            spacing,
-            hSpacing,
-            vSpacing,
-            hCount,
-            vCount,
+            sizeHorizontal,
+            sizeVertical,
+            spacingAll,
+            spacingHorizontal,
+            spacingVertical,
+            countHorizontal,
+            countVertical,
             xHeight,
             xWidth,
             xPadding,

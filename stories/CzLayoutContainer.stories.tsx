@@ -1,14 +1,14 @@
 import {
   AdjustProps,
+  AlignHorizontal,
   AlignProps,
+  AlignVertical,
   ChildSizeProps,
-  HAlign,
+  LayoutAdjust,
   LayoutType,
   Orientation,
   OrientationProps,
-  SizeAdjust,
   SpacingProps,
-  VAlign,
 } from '@cozka/react-layout/layouts';
 import { StyleProps } from '@cozka/react-style-props';
 import type { ArgTypes, Meta, StoryObj } from '@storybook/react';
@@ -18,7 +18,7 @@ import CzLayoutContainer, {
 } from '../src/CzLayoutContainer';
 import _createContainerDecorator from './_createContainerDecorator';
 
-const LAYOUTS: LayoutType[] = [
+const LAYOUT_OPTIONS: LayoutType[] = [
   'balance',
   'brick',
   'conform',
@@ -27,9 +27,9 @@ const LAYOUTS: LayoutType[] = [
   'stack',
 ];
 
-const ORIENTATIONS: Orientation[] = ['horizontal', 'vertical'];
+const ORIENTATION_OPTIONS: Orientation[] = ['horizontal', 'vertical'];
 
-const H_ALAGNS: HAlign[] = [
+const ALAGN_HORIZONTAL_OPTIONS: AlignHorizontal[] = [
   'left',
   'center',
   'right',
@@ -39,7 +39,7 @@ const H_ALAGNS: HAlign[] = [
   'fit',
 ];
 
-const V_ALAGNS: VAlign[] = [
+const ALAGN_VERTICAL_OPTIONS: AlignVertical[] = [
   'top',
   'middle',
   'bottom',
@@ -49,12 +49,12 @@ const V_ALAGNS: VAlign[] = [
   'fit',
 ];
 
-const SIZE_ADJUST: SizeAdjust[] = ['none', 'expand', 'narrow'];
+const LAYOUT_ADJUST_OPTIONS: LayoutAdjust[] = ['none', 'expand', 'narrow'];
 
 const LAYOUT_ARG_TYPES: ArgTypes = {
   layout: {
     control: { type: 'select' },
-    options: LAYOUTS,
+    options: LAYOUT_OPTIONS,
   },
   scroll: { type: 'boolean' },
 };
@@ -62,67 +62,67 @@ const LAYOUT_ARG_TYPES: ArgTypes = {
 const ORIENTATION_ARG_TYPES: ArgTypes = {
   orientation: {
     control: { type: 'select' },
-    options: ORIENTATIONS,
+    options: ORIENTATION_OPTIONS,
   },
 };
 
 const ALIGN_ARG_TYPES: ArgTypes = {
-  hAlign: {
+  alignHorizontal: {
     control: { type: 'select' },
-    options: H_ALAGNS,
+    options: ALAGN_HORIZONTAL_OPTIONS,
   },
-  vAlign: {
+  alignVertical: {
     control: { type: 'select' },
-    options: V_ALAGNS,
+    options: ALAGN_VERTICAL_OPTIONS,
   },
 };
 
 const ADJUST_ARG_TYPES: ArgTypes = {
-  vAdjust: {
+  adjustHorizontal: {
     control: { type: 'select' },
-    options: SIZE_ADJUST,
+    options: LAYOUT_ADJUST_OPTIONS,
   },
-  hAdjust: {
+  adjustVertical: {
     control: { type: 'select' },
-    options: SIZE_ADJUST,
+    options: LAYOUT_ADJUST_OPTIONS,
   },
 };
 
 const CHILD_SIZE_ARG_TYPES: ArgTypes = {
-  vSize: {
+  sizeHorizontal: {
     type: 'string',
   },
-  hSize: {
+  sizeVertical: {
     type: 'string',
   },
 };
 
 const SPACING_ARG_TYPES: ArgTypes = {
-  spacing: {
+  spacingAll: {
     type: 'string',
   },
-  hSpacing: {
+  spacingHorizontal: {
     type: 'string',
   },
-  vSpacing: {
+  spacingVertical: {
     type: 'string',
   },
 };
 
 const CHILD_COUNT_ARG_TYPES: ArgTypes = {
-  hCount: {
+  countHorizontal: {
     type: 'string',
   },
-  vCount: {
+  countVertical: {
     type: 'string',
   },
 };
 
 const GRID_TEMPLATE_ARG_TYPES: ArgTypes = {
-  hTemplate: {
+  templateHorizontal: {
     type: 'string',
   },
-  vTemplate: {
+  templateVertical: {
     type: 'string',
   },
 };
@@ -191,39 +191,39 @@ const LAYOUT_PROPS = {
   childStyle: undefined,
 };
 
-const ADJUST_PROPS: AdjustProps = {
-  vAdjust: 'none',
-  hAdjust: 'none',
-};
-
-const ALIGN_PROPS: AlignProps = {
-  vAlign: 'top',
-  hAlign: 'left',
-};
-
-const CHILD_SIZE_PROPS: ChildSizeProps = {
-  vSize: '80',
-  hSize: '160',
-};
-
 const ORIENTATION_PROPS: OrientationProps = {
   orientation: 'horizontal',
 };
 
+const ALIGN_PROPS: AlignProps = {
+  alignHorizontal: 'left',
+  alignVertical: 'top',
+};
+
+const CHILD_SIZE_PROPS: ChildSizeProps = {
+  sizeHorizontal: '160',
+  sizeVertical: '80',
+};
+
+const ADJUST_PROPS: AdjustProps = {
+  adjustHorizontal: 'none',
+  adjustVertical: 'none',
+};
+
 const SPACING_PROPS: SpacingProps = {
-  spacing: '8',
-  vSpacing: undefined,
-  hSpacing: undefined,
+  spacingAll: '8',
+  spacingHorizontal: undefined,
+  spacingVertical: undefined,
 };
 
 const CHILD_COUNT_PROPS: any = {
-  hCount: '4',
-  vCount: '3',
+  countHorizontal: '4',
+  countVertical: '3',
 };
 
 const GRID_TEMPLATE_PROPS = {
-  hTemplate: undefined,
-  vTemplate: undefined,
+  templateHorizontal: undefined,
+  templateVertical: undefined,
 };
 
 const CONTAINER_PROPS: StyleProps = {
